@@ -21,6 +21,9 @@ zuul:
   semaphore:
     max-semaphores: 500
   routes:
-    sino-route:
+    dash-system:
       path: /api-system/**
       serviceId: dash-system
+    dash-config:
+      path: /dash-config/**
+      serviceId: dash-config

@@ -11,6 +11,7 @@
     <modules>
         <module>dash-discovery</module>
         <module>dash-gateway</module>
+        <module>dash-config</module>
         <module>dash-system</module>
     </modules>
 
