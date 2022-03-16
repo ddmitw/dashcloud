@@ -27,3 +27,6 @@ zuul:
     dash-config:
       path: /dash-config/**
       serviceId: dash-config
+    dash-auth:
+      path: /dash-auth/**
+      serviceId: dash-auth

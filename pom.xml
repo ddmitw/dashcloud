@@ -28,6 +28,7 @@
         <java.version>1.8</java.version>
         <spring-boot.version>2.6.4</spring-boot.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <dashcloud.version>0.0.1-SNAPSHOT</dashcloud.version>
     </properties>
 
     <dependencyManagement>
@@ -49,6 +50,13 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!--dashcloud核心依赖版本-->
+            <dependency>
+                <groupId>com.ddmit</groupId>
+                <artifactId>dash-common-core</artifactId>
+                <version>${dashcloud.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
