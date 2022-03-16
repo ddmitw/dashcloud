@@ -23,7 +23,7 @@ zuul:
   routes:
     dash-system:
       path: /api-system/**
-      serviceId: dash-system
+      serviceId: dash-modules-system
     dash-config:
       path: /dash-config/**
       serviceId: dash-config

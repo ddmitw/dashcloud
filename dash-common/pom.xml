@@ -8,19 +8,12 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>dash-config</artifactId>
-	<description>Config Project for DashCloud</description>
+	<artifactId>dash-common</artifactId>
+	<packaging>pom</packaging>
+	<name>dash-common</name>
+	<description>Common Module for Dashcloud</description>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
-		</dependency>
-	</dependencies>
-
+	<modules>
+		<module>dash-common-core</module>
+	</modules>
 </project>

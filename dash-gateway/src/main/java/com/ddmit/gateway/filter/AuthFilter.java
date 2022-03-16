@@ -31,6 +31,7 @@ public class AuthFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
+        // 过滤器的具体业务逻辑
         logger.info("Zuul登录请求拦截……");
         System.out.println("请求拦截……");
         return null;

@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ddmit</groupId>
-		<artifactId>dashcloud</artifactId>
+		<artifactId>dash-modules</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>dash-config</artifactId>
-	<description>Config Project for DashCloud</description>
+	<artifactId>dash-modules-system</artifactId>
+	<name>dash-modules-system</name>
 
 	<dependencies>
 		<dependency>
@@ -18,8 +18,14 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!--客户端-读取配置中心配置-->
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 	</dependencies>
 

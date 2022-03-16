@@ -12,7 +12,7 @@ spring:
       server:
         # 本地配置文件位置，使用此配置项，还需要启用spring.profiles.active=native
         native:
-          search-locations: C:/study/dashcloud-config-files
+          search-locations: C:/study/ddmit/dashcloud/dashcloud-config-files
         # git配置文件仓库配置
 #        git:
 #          uri: https://example.com/my/repo

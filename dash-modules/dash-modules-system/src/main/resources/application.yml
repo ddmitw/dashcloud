@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: dash-modules-system
+  profiles:
+    active: dev
+  # 如果没有启用[Config First Bootstrap](https://docs.spring.io/spring-cloud-config/docs/current/reference/html/#config-first-bootstrap)
+  # 则必须配置 spirng.config.import
+  config:
+    import: optional:configserver:dash-config
+  cloud:
+    config:
+      discovery:
+        # 启用 eureka配置发现
+        enabled: true
+        # 配置服务的serviceId
+        serviceId: dash-config
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8767/eureka/

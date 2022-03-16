@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: dash-system
+    name: dash-auth
   profiles:
     active: dev
   # 如果没有启用[Config First Bootstrap](https://docs.spring.io/spring-cloud-config/docs/current/reference/html/#config-first-bootstrap)

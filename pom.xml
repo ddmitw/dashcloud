@@ -12,7 +12,9 @@
         <module>dash-discovery</module>
         <module>dash-gateway</module>
         <module>dash-config</module>
-        <module>dash-system</module>
+        <module>dash-auth</module>
+        <module>dash-common</module>
+        <module>dash-modules</module>
     </modules>
 
     <name>dashcloud</name>
@@ -29,7 +31,7 @@
     </properties>
 
     <dependencyManagement>
-        <!--管理各模块组件依赖-->
+        <!--管理各模块组件依赖及依赖版本-->
         <dependencies>
             <!-- SpringCloud 微服务 -->
             <dependency>
