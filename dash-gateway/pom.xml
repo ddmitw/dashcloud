@@ -22,6 +22,15 @@
 			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.ddmit</groupId>
+			<artifactId>dash-common-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ddmit</groupId>
+			<artifactId>dash-auth</artifactId>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

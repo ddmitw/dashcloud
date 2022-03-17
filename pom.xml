@@ -29,6 +29,9 @@
         <spring-boot.version>2.6.4</spring-boot.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <dashcloud.version>0.0.1-SNAPSHOT</dashcloud.version>
+        <fastjson.version>1.2.79</fastjson.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+
     </properties>
 
     <dependencyManagement>
@@ -58,6 +61,28 @@
                 <artifactId>dash-common-core</artifactId>
                 <version>${dashcloud.version}</version>
             </dependency>
+
+            <!--dashcloud auth依赖版本-->
+            <dependency>
+                <groupId>com.ddmit</groupId>
+                <artifactId>dash-auth</artifactId>
+                <version>${dashcloud.version}</version>
+            </dependency>
+
+            <!-- JSON 解析器和生成器 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
