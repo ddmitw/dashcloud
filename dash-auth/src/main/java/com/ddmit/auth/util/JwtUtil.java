@@ -44,15 +44,15 @@ public class JwtUtil {
      * @param token
      * @return
      */
-    public static Map<String, Claim> verifyToken(String token) {
+    public static boolean verifyToken(String token) {
         JWTVerifier verifier = JWT.require(Algorithm.HMAC256(TokenConstants.TOKEN_SECRET)).build();
-        DecodedJWT jwt = null;
         try {
-            jwt = verifier.verify(token);
+            verifier.verify(token);
         } catch (Exception e) {
-            throw new RuntimeException("凭证已过期，请重新登录");
+            e.printStackTrace();
+            return false;
         }
-        return jwt.getClaims();
+        return true;
     }
 
     /**
@@ -65,5 +65,4 @@ public class JwtUtil {
         DecodedJWT decodedJWT = JWT.decode(token);
         return decodedJWT.getClaims();
     }
-
 }

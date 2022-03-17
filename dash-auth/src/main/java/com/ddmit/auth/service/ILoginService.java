@@ -26,4 +26,13 @@ public interface ILoginService {
      * @return token信息
      */
     Map<String, Object> createToken(LoginUser loginUser);
+
+    /**
+     * token验证
+     *
+     * @param token 认证信息
+     * @return 认证结果
+     */
+    boolean verifyToken(String token);
+
 }

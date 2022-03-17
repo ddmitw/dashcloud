@@ -35,4 +35,9 @@ public class LoginServiceImpl implements ILoginService {
         map.put("userInfo", loginUser);
         return map;
     }
+
+    @Override
+    public boolean verifyToken(String token) {
+        return JwtUtil.verifyToken(token);
+    }
 }

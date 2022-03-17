@@ -14,11 +14,17 @@ public class TokenConstants {
     /**
      * 令牌有效期（秒）
      */
-    public final static int TOKEN_EXPIRE = 720;
+    public final static int TOKEN_EXPIRE = 10;
 
     /**
      * 令牌前缀
      */
     public static final String TOKEN_PREFIX = "Bearer ";
+
+    /**
+     * 令牌自定义标识
+     */
+    public static final String TOKEN_HEADER = "Authorization";
+
 
 }

@@ -68,6 +68,10 @@ public class R<T> implements Serializable {
     }
 
     public static <T> R<T> ok(T data) {
-        return restResult(data, SystemConstants.SUCCESS, null);
+        return restResult(data, SUCCESS, null);
+    }
+
+    public static <T> R<T> unAuth(String msg) {
+        return restResult(null, UNAUTHORIZED, msg);
     }
 }
