@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>dash-common</artifactId>
+		<groupId>com.ddmit</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>dash-common-redis</artifactId>
+	<name>dash-common-redis</name>
+	<description>Common redis module for Dashcloud</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<!--dashcloud核心依赖模块-->
+		<dependency>
+			<groupId>com.ddmit</groupId>
+			<artifactId>dash-common-core</artifactId>
+		</dependency>
+	</dependencies>
+
+
+</project>
