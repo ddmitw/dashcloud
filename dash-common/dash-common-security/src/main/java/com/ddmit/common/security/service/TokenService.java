@@ -1,10 +1,13 @@
 package com.ddmit.common.security.service;
 
 import com.ddmit.common.core.constant.CacheConstants;
+import com.ddmit.common.core.constant.TokenConstants;
 import com.ddmit.common.core.model.LoginUser;
 import com.ddmit.common.redis.service.RedisService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,12 +35,16 @@ public class TokenService {
     }
 
     /**
-     * token验证
+     * 获取token字符串，不带前缀
      *
-     * @param token 认证信息
-     * @return 认证结果
+     * @param request 请求信息
+     * @return 认证token字符串
      */
-    public boolean verifyToken(String token) {
-        return false;
+    public String getToken(HttpServletRequest request) {
+        String token = request.getHeader(TokenConstants.TOKEN_HEADER);
+        if (StringUtils.isNotEmpty(token) && token.startsWith(TokenConstants.TOKEN_PREFIX)) {
+            token = token.replace(TokenConstants.TOKEN_PREFIX, "");
+        }
+        return token;
     }
 }
