@@ -1,0 +1,4 @@
+# 不校验白名单
+ignore:
+  whites:
+    - "/dash-auth/login"

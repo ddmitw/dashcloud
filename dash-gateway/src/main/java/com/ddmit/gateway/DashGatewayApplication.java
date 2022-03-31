@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @EnableEurekaClient
 @EnableZuulProxy
-@SpringBootApplication(scanBasePackages = {"com.ddmit.gateway", "com.ddmit.auth"})
+@SpringBootApplication
 public class DashGatewayApplication {
 
     public static void main(String[] args) {

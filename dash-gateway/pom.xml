@@ -15,6 +15,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>3.1.1</version>
 		</dependency>
 
 		<dependency>
@@ -22,14 +23,31 @@
 			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
 
+		<!--客户端-读取配置中心配置-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bootstrap -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+
+
+		<!--dashcloud核心依赖模块-->
 		<dependency>
 			<groupId>com.ddmit</groupId>
 			<artifactId>dash-common-core</artifactId>
 		</dependency>
 
+		<!--dashcloud安全过滤模块-->
 		<dependency>
 			<groupId>com.ddmit</groupId>
-			<artifactId>dash-auth</artifactId>
+			<artifactId>dash-common-security</artifactId>
 		</dependency>
 	</dependencies>
 

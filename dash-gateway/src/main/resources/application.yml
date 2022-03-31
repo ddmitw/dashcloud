@@ -4,7 +4,20 @@ server:
 spring:
   application:
     name: dash-gateway
-
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:dash-config
+  cloud:
+    config:
+      uri:
+        - "http://localhost:8085"
+      profile: dev
+      discovery:
+        # 启用 eureka配置发现
+        enabled: true
+        # 配置服务的serviceId
+        serviceId: dash-config
 eureka:
   instance:
     hostname: localhost
@@ -30,3 +43,8 @@ zuul:
     dash-auth:
       path: /dash-auth/**
       serviceId: dash-auth
+
+# 不校验白名单
+#ignore:
+#  whites:
+#    - "/dash-auth/login"

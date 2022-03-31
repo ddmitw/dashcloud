@@ -1,10 +1,11 @@
 package com.ddmit.gateway.filter;
 
 import com.alibaba.fastjson.JSON;
-import com.ddmit.auth.service.ILoginService;
 import com.ddmit.common.core.constant.HttpStatusConstants;
-import com.ddmit.common.core.constant.TokenConstants;
 import com.ddmit.common.core.domain.R;
+import com.ddmit.common.redis.service.RedisService;
+import com.ddmit.common.security.service.TokenService;
+import com.ddmit.gateway.config.IgnoreWhiteConfig;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.apache.commons.lang3.StringUtils;
@@ -23,8 +24,13 @@ public class AuthFilter extends ZuulFilter {
     private static final Logger logger = LoggerFactory.getLogger((AuthFilter.class));
 
     @Autowired
-    private ILoginService loginService;
+    private TokenService tokenService;
 
+    @Autowired
+    private RedisService redisService;
+
+    @Autowired
+    private IgnoreWhiteConfig ignoreWhite;
 
     @Override
     public String filterType() {
@@ -46,20 +52,40 @@ public class AuthFilter extends ZuulFilter {
 
     @Override
     public Object run() {
+        // 过滤器的具体业务逻辑
+
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
         HttpServletResponse response = ctx.getResponse();
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("UTF-8");
 
-        // 过滤器的具体业务逻辑
-        String tokenHeader = request.getHeader(TokenConstants.TOKEN_HEADER);
-        if (StringUtils.isEmpty(tokenHeader) || !loginService.verifyToken(StringUtils.substringAfter(tokenHeader, TokenConstants.TOKEN_PREFIX))) {
-            logger.info("无token信息或token失效……");
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(HttpStatusConstants.UNAUTHORIZED);
-            ctx.setResponseBody(JSON.toJSONString(R.unAuth("凭证已过期，请重新登录")));
+        String url = request.getRequestURI();
+        // TODO spinrg cloud config 配置读取不到
+        // 跳过不需要验证的路径
+        if (ignoreWhite.getWhites().contains(url)) {
+            return response;
         }
+
+        // 获取token字符串
+        String token = tokenService.getToken(request);
+        if (StringUtils.isBlank(token)) {
+            ctx.setSendZuulResponse(false);
+            logger.info("请求无效，token信息为空");
+            ctx.setResponseBody(JSON.toJSONString(R.unAuth("令牌不能为空")));
+            return response;
+        }
+
+        // 根据token获取用户信息
+        String userInfoString = redisService.getCacheObject(token);
+        if (StringUtils.isBlank(userInfoString)) {
+            ctx.setSendZuulResponse(false);
+            logger.info("请求无效，登录状态已过期");
+            ctx.setResponseStatusCode(HttpStatusConstants.UNAUTHORIZED);
+            ctx.setResponseBody(JSON.toJSONString(R.unAuth("登录状态已过期")));
+            return response;
+        }
+
         return response;
     }
 
