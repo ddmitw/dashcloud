@@ -4,6 +4,7 @@ import com.ddmit.auth.form.LoginBody;
 import com.ddmit.auth.service.ILoginService;
 import com.ddmit.common.core.domain.R;
 import com.ddmit.common.core.model.LoginUser;
+import com.ddmit.common.security.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,11 +20,14 @@ public class LoginController {
     @Autowired
     private ILoginService loginService;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("login")
     public R<?> login(@RequestBody LoginBody form) {
         // 用户登录
         LoginUser userInfo = loginService.login(form.getUsername(), form.getPassword());
         // 获取登录token
-        return R.ok(loginService.createToken(userInfo));
+        return R.ok(tokenService.createToken(userInfo));
     }
 }

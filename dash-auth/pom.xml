@@ -28,15 +28,16 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>3.19.0</version>
+			<groupId>com.ddmit</groupId>
+			<artifactId>dash-common-core</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>com.ddmit</groupId>
-			<artifactId>dash-common-core</artifactId>
+			<artifactId>dash-common-security</artifactId>
 		</dependency>
+
+
 	</dependencies>
 
 </project>
