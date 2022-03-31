@@ -30,6 +30,7 @@
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <dashcloud.version>0.0.1-SNAPSHOT</dashcloud.version>
         <fastjson.version>1.2.79</fastjson.version>
+        <jackson.version>2.13.2</jackson.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
 
     </properties>
@@ -62,11 +63,31 @@
                 <version>${dashcloud.version}</version>
             </dependency>
 
+            <!--dashcloud redis依赖版本-->
+            <dependency>
+                <groupId>com.ddmit</groupId>
+                <artifactId>dash-common-redis</artifactId>
+                <version>${dashcloud.version}</version>
+            </dependency>
+
             <!--dashcloud auth依赖版本-->
             <dependency>
                 <groupId>com.ddmit</groupId>
                 <artifactId>dash-auth</artifactId>
                 <version>${dashcloud.version}</version>
+            </dependency>
+
+            <!--dashcloud common security依赖版本-->
+            <dependency>
+                <groupId>com.ddmit</groupId>
+                <artifactId>dash-common-security</artifactId>
+                <version>${dashcloud.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
 
             <!-- JSON 解析器和生成器 -->
